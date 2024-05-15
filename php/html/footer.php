@@ -19,10 +19,11 @@
     <option value="Honorarios"></option>
 </datalist>
 <script src="../js/menu.js"></script>
-<script src="../js/scripts__simples.js"></script>
+<script src="../js/tamanhoRenavam.js"></script>
 <script src="js/somaValores_porMain.js"></script>
 <script src="js/addLinha_porMain.js"></script>
 <script src="js/removeLinha_porMain.js"></script>
 <script src="js/irIndex.js"></script>
+<script src="js/print_retirandoOutros.js"></script>
 </body>
 </html>

@@ -170,7 +170,8 @@
     </datalist>
     <script src="js/data.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/scripts__simples.js"></script>
+    <script src="js/print.js"></script>
+    <script src="js/tamanhoRenavam.js"></script>
     <script src="js/addLinha.js"></script>
     <script src="js/removeLinha.js"></script>
     <script src="js/somaValores.js"></script>

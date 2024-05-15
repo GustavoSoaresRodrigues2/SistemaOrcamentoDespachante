@@ -350,3 +350,15 @@ hr {
 #buttons.hidden {
     display: none;
 }
+
+#num.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#num.manifest {
+    opacity: 1;
+    visibility: visible;
+
+    background-color: red;
+}

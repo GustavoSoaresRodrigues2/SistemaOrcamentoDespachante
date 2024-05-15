@@ -40,7 +40,7 @@
 
                 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "
-                    <main onmousemove=\"adicionarOuvinteInputsPreco('valorOrcamento" . $cont . "')\">
+                    <main id='num" . $cont ."' onmousemove=\"adicionarOuvinteInputsPreco('valorOrcamento" . $cont . "')\">
                         <figure>
                             <img src='../img/sagg_logo_semFundo.jpg' alt='Logo SAGG Despachante' class='logo'>
                         </figure>
@@ -116,6 +116,10 @@
                             <hr>
 
                             <section id='buttons' class='manifest'>
+                                <button type='button' class='btn' id='print' onclick=\"printTirandoOutros('num" . $cont ."')\">
+                                    Print
+                                </button>
+
                                 <button type='submit' class='btn' id=''>
                                     Alterar
                                 </button>

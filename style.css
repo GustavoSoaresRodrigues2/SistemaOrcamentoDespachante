@@ -1,0 +1,352 @@
+:root {
+    --cor-principal: #e9e9e9;
+    --cor-segundaria: #333;
+
+    --preto: #000000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    font-size: 16pt;
+    font-family: Cambria, sans-serif, 'Times New Roman';
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[name="tipoOrcamento"] {
+    width: 85%;
+    padding: 10px 15px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.btn {
+    align-items: center;
+    appearance: none;
+    background-color: #e8e8e8;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: var(--cor-segundaria);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px, rgba(0, 0, 0, 0.15) 0 7px 13px -3px, #333 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: var(--preto);
+    cursor: pointer;
+    display: inline-flex;
+    height: 56px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 4px 8px, rgba(0, 0, 0, 0.2) 0 7px 13px -3px, #333 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+html, body {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--cor-principal);
+}
+
+#header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    width: 350px;
+    height: 100%;
+
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+
+    background: linear-gradient(to bottom right, rgb(65, 65, 65), var(--cor-principal));
+    border-right: 1px solid var(--cor-segundaria);
+}
+
+#header > h1 {
+    font-weight: normal;
+    font-size: 40pt;
+}
+
+#header.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#header.manifest {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#nav {
+    height: inherit;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#nav > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+#nav > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 80px;
+}
+
+#alterar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: fit-content;
+    gap: 15px;
+}
+
+#consultar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: fit-content;
+    gap: 15px;
+
+    text-align: center;
+}
+
+#controlMenu {
+    display: flex;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    position: fixed;
+    z-index: 2;
+    top: 20px;
+    right: 20px;
+}
+
+.labelControl {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+}
+
+.labelControl input {
+    display: none;
+}
+
+.labelControl span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: var(--cor-segundaria);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.labelControl span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+
+.labelControl span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+}
+
+.labelControl span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+}
+
+.labelControl input:checked ~ span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0px;
+    left: 5px;
+}
+
+.labelControl input:checked ~ span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.labelControl input:checked ~ span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    width: 1000px;
+    padding: 20px 0px;
+    margin: 70px 0px;
+
+    border: 1px solid var(--cor-segundaria);
+    border-radius: 10px;
+    background-color: #e8e8e8;
+    box-shadow: 2px 2px 10px #ccc;
+}
+
+.logo {
+    border: 1px solid var(--cor-segundaria);
+    border-radius: 5px;
+
+    width: 175px;
+    height: 60px;
+
+    filter: none;
+}
+
+hr {
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--cor-segundaria);
+}
+
+#salvar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    gap: 20px;
+}
+
+#salvar > section:nth-of-type(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 70%;
+}
+
+#salvar > section:nth-of-type(1) > label {
+    width: 155px;
+}
+
+#salvar > section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+}
+
+#salvar > section:nth-of-type(3) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 10px;
+}
+
+#salvar > section:nth-of-type(3) > input {
+    width: 400px !important;
+}
+
+#salvar > section:nth-of-type(4) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+
+    width: 75%;
+}
+
+#salvar > section:nth-of-type(4) > input[type=text] {
+    width: 100% !important;
+}
+
+#salvar > section:nth-of-type(4) > input[type=number] {
+    width: 100px !important;
+}
+
+#salvar > section:nth-of-type(5) {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+}
+
+#buttons.manifest {
+    display: block;
+}
+
+#buttons.hidden {
+    display: none;
+}

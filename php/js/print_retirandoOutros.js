@@ -1,20 +1,30 @@
+
 function printTirandoOutros(mainPrincipal) {
-    
-    var mains = document.querySelectorAll('main')
+    var mains = document.querySelectorAll('main');
 
+    for (let i = 1; i <= mains.length; i++) {
+        var main = document.getElementById('num' + i)
 
-    for (let i = 0; i < mains.length; i++) {
-        var mains = document.getElementById('#num' + i);
-
-        // Percorre todas as mains
-        mains.forEach(function(main) {
-            // Verifica se a main atual é diferente da mainPrincipal
-            if (main !== mainPrincipal) {
-                // Esconde a main atual se for diferente da mainPrincipal
-                main.style.display = 'none';
-            } else {
-                console.log("dgsdg")
+        if (main) {
+            if (main.getAttribute('id') !== mainPrincipal) {
+                main.style.display = 'none'
             }
-        });
+        }
     }
+
+    var buttons = document.querySelectorAll('#buttons');
+
+    buttons.forEach(function() {
+        buttons.setAttribute('class', '');
+    });
+
+
+    // Btns.classList.add('hidden')
+    // setTimeout(() => {
+    //     window.print()
+    // }, 1000);
+    
 }
+
+
+

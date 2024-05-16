@@ -323,7 +323,7 @@ hr {
     justify-items: center;
     align-items: center;
 
-    width: 75%;
+    width: 95%;
 }
 
 #salvar > section:nth-of-type(4) > input[type=text] {
@@ -332,6 +332,7 @@ hr {
 
 #salvar > section:nth-of-type(4) > input[type=number] {
     width: 100px !important;
+    text-align: right;
 }
 
 #salvar > section:nth-of-type(5) {

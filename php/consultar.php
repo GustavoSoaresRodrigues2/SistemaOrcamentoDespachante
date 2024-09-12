@@ -36,9 +36,10 @@
 
                 include('html/header.php');
                 
-                $cont = 1;
+                $cont = 0;
 
                 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $cont += 1;
                     echo "
                     <main id='num" . $cont ."' onmousemove=\"adicionarOuvinteInputsPreco('valorOrcamento" . $cont . "')\">
                         <figure>
@@ -136,9 +137,10 @@
                         </form>
                     </main>
                     ";
-
-                    $cont += 1;
                 }
+                echo "
+                <div class='mostrarCont'>Foram encontrados " . $cont . " orçamentos.</div>
+                ";
                 include('html/footer.php'); 
             } else {
                 echo "<script>alert('Nenhum resultado encontrado!'); window.location.href = '../index.php';</script>";

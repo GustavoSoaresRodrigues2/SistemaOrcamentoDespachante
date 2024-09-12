@@ -1,6 +1,3 @@
-<footer>
-    Feito por Gustavo Soares Rodrigues - &#169;Copyright 2024. <a href="https://github.com/GustavoSoaresRodrigues2/SistemaOrcamentoDespachante.git" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a>
-</footer>
 <datalist id="lista_orcamento">
     <option value="Licenciamento"></option>
     <option value="Transferência de Propriedade"></option>
@@ -26,4 +23,7 @@
 <script src="js/irIndex.js"></script>
 <script src="js/print_retirandoOutros.js"></script>
 </body>
+<footer>
+    Feito por Gustavo Soares Rodrigues - &#169;Copyright 2024. <a href="https://github.com/GustavoSoaresRodrigues2/SistemaOrcamentoDespachante.git" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a>
+</footer>
 </html>

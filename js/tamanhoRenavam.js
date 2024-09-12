@@ -8,3 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
+var btnExtrato = document.getElementById('extratoValores')
+
+btnExtrato.addEventListener('click', function () {
+    window.location.href = 'php/extratoValores.php'
+})

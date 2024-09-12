@@ -50,7 +50,7 @@
                 </form>
             </div>
 
-            <button type="button" class="btn" id="">
+            <button type="button" class="btn" id="extratoValores">
                 Extrato de Valores
             </button>
         </nav>
@@ -147,9 +147,7 @@
             </section>
         </form>
     </main>
-    <footer>
-        Feito por Gustavo Soares Rodrigues - &#169;Copyright 2024. <a href="https://github.com/GustavoSoaresRodrigues2/SistemaOrcamentoDespachante.git" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a>
-    </footer>
+    
 
     <datalist id="lista_orcamento">
         <option value="Licenciamento"></option>
@@ -166,6 +164,7 @@
         <option value="Multas (00)"></option>
         <option value="Placa Mercosul - Confeccao / Instalacao"></option>
         <option value="2° Via Placa Mercosul - Confeccao / Instalacao"></option>
+        <option value="2° Via de DUT"></option>
         <option value="Honorarios"></option>
     </datalist>
     <script src="js/data.js"></script>
@@ -176,4 +175,7 @@
     <script src="js/removeLinha.js"></script>
     <script src="js/somaValores.js"></script>
 </body>
+<footer>
+    Feito por Gustavo Soares Rodrigues - &#169;Copyright 2024. <a href="https://github.com/GustavoSoaresRodrigues2/SistemaOrcamentoDespachante.git" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a>
+</footer>
 </html>

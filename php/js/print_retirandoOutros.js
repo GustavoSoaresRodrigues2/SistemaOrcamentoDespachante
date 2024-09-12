@@ -12,18 +12,16 @@ function printTirandoOutros(mainPrincipal) {
         }
     }
 
-    var buttons = document.querySelectorAll('#buttons');
-
-    buttons.forEach(function() {
-        buttons.setAttribute('class', '');
-    });
-
-
-    // Btns.classList.add('hidden')
-    // setTimeout(() => {
-    //     window.print()
-    // }, 1000);
+    var mainPai = document.getElementById(mainPrincipal)
+    var Btns = mainPai.querySelector('#buttons')
+    Btns.classList.remove('manifest')
+    Btns.classList.add('hidden')
     
+    setTimeout(() => {
+        window.print()
+        Btns.classList.remove('hidden')
+        Btns.classList.add('manifest')
+    }, 1000);
 }
 
 

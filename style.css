@@ -260,8 +260,8 @@ main {
     border: 1px solid var(--cor-segundaria);
     border-radius: 5px;
 
-    width: 175px;
-    height: 60px;
+    width: 300px;
+    height: 110px;
 
     filter: none;
 }
@@ -362,4 +362,14 @@ hr {
     visibility: visible;
 
     background-color: red;
+}
+
+.total, p {
+    padding-top: 40px;
+}
+
+.mostrarCont {
+    display: flex;
+    position: absolute;
+    top: 15px;
 }

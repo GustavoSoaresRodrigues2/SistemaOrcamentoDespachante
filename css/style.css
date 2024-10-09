@@ -1,0 +1,30 @@
+main {
+    background-color: red;
+    width: 210px;
+    height: 500px;
+    position: relative; /* Para o posicionamento absoluto dos contêineres */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 210px;
+}
+
+.input-movel {
+    cursor: text;
+}
+
+.icon-mover {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: move;
+    margin-left: 5px; /* Espaçamento entre o input e a bola */
+}

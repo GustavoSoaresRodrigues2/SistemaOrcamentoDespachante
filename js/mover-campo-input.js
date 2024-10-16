@@ -1,86 +1,71 @@
-const containers = document.querySelectorAll('.container');
-let isDragging = false;
-let offsetX, offsetY, currentContainer;
+document.querySelectorAll('.icon-mover').forEach((icon) => {
+    icon.addEventListener('mousedown', function (e) {
+        const container = this.parentElement;
+        const main = document.querySelector('main');
+        const mainRect = main.getBoundingClientRect();
+        let shiftX = e.clientX - container.getBoundingClientRect().left;
+        let shiftY = e.clientY - container.getBoundingClientRect().top;
 
-containers.forEach(container => {
-    const handle = container.querySelector('.icon-mover');
+        const moveAt = (pageX, pageY) => {
+            // Limitar dentro do main
+            let newLeft = pageX - shiftX;
+            let newTop = pageY - shiftY;
 
-    handle.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        currentContainer = container;
-        offsetX = e.clientX - currentContainer.getBoundingClientRect().left;
-        offsetY = e.clientY - currentContainer.getBoundingClientRect().top;
-        e.stopPropagation();
+            // Impedir que o input saia dos limites horizontais
+            if (newLeft < mainRect.left) {
+                newLeft = mainRect.left;
+            }
+            if (newLeft + container.offsetWidth > mainRect.right) {
+                newLeft = mainRect.right - container.offsetWidth;
+            }
+
+            // Impedir que o input saia dos limites verticais
+            if (newTop < mainRect.top) {
+                newTop = mainRect.top;
+            }
+            if (newTop + container.offsetHeight > mainRect.bottom) {
+                newTop = mainRect.bottom - container.offsetHeight;
+            }
+
+            container.style.left = newLeft + 'px';
+            container.style.top = newTop + 'px';
+        };
+
+        const onMouseMove = (event) => {
+            moveAt(event.pageX, event.pageY);
+            checkForOverlap();
+        };
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        container.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            container.onmouseup = null;
+        };
     });
+
+    icon.ondragstart = function () {
+        return false;
+    };
 });
 
-document.addEventListener('mousemove', (e) => {
-    if (isDragging && currentContainer) {
-        let newLeft = e.clientX - offsetX;
-        let newTop = e.clientY - offsetY;
-
-        // Obter limites de main
-        const mainRect = document.querySelector('main').getBoundingClientRect();
-        const containerRect = currentContainer.getBoundingClientRect();
-
-        // Restrições para manter o container dentro de main
-        if (newLeft < mainRect.left) {
-            newLeft = mainRect.left;
-        }
-        if (newLeft + containerRect.width > mainRect.right) {
-            newLeft = mainRect.right - containerRect.width;
-        }
-        if (newTop < mainRect.top) {
-            newTop = mainRect.top;
-        }
-        if (newTop + containerRect.height > mainRect.bottom) {
-            newTop = mainRect.bottom - containerRect.height;
-        }
-
-        // Verificação de sobreposição com outros contêineres
-        containers.forEach(otherContainer => {
-            if (otherContainer !== currentContainer) {
-                const otherRect = otherContainer.getBoundingClientRect();
-
-                // Verifica se há sobreposição
-                if (
-                    newLeft < otherRect.right &&
-                    newLeft + containerRect.width > otherRect.left &&
-                    newTop < otherRect.bottom &&
-                    newTop + containerRect.height > otherRect.top
-                ) {
-                    // Ajusta a posição para evitar sobreposição
-                    if (newTop < otherRect.bottom && newTop + containerRect.height > otherRect.top) {
-                        newTop = otherRect.top - containerRect.height; // Move acima
-                    } else if (newTop + containerRect.height > otherRect.top && newTop < otherRect.bottom) {
-                        newTop = otherRect.bottom; // Move abaixo
-                    }
-                }
+function checkForOverlap() {
+    const containers = document.querySelectorAll('.container');
+    containers.forEach((container, index) => {
+        containers.forEach((otherContainer, otherIndex) => {
+            if (index !== otherIndex && isOverlapping(container, otherContainer)) {
+                container.style.top = parseInt(container.style.top) + 50 + 'px'; // Ajusta a posição
             }
         });
-
-        currentContainer.style.left = `${newLeft - mainRect.left}px`;
-        currentContainer.style.top = `${newTop - mainRect.top}px`;
-    }
-});
-
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-    currentContainer = null;
-});
-
-// Ajusta a posição da bola ao carregar a página
-function updateHandlePosition() {
-    containers.forEach(container => {
-        const input = container.querySelector('.input-movel');
-        const handle = container.querySelector('.icon-mover');
-
-        handle.style.left = `${input.getBoundingClientRect().right + window.scrollX}px`;
-        handle.style.top = `${input.getBoundingClientRect().top + window.scrollY}px`;
     });
 }
 
-// Chama a função para posicionar a bola ao carregar a página
-window.onload = updateHandlePosition;
-// Chama a função quando a janela é redimensionada
-window.onresize = updateHandlePosition;
+function isOverlapping(element1, element2) {
+    const rect1 = element1.getBoundingClientRect();
+    const rect2 = element2.getBoundingClientRect();
+
+    return !(rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom);
+}

@@ -1,23 +1,21 @@
-main {
-    background-color: red;
-    width: 210px;
-    height: 500px;
-    position: relative; /* Para o posicionamento absoluto dos contêineres */
-
-    display: flex;
-    flex-direction: column;
+body {
+    font-family: Arial, sans-serif;
 }
 
 .container {
-    position: absolute;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 210px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 300px;
+    height: 50px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
 }
 
 .input-movel {
-    cursor: text;
+    flex-grow: 1;
+    padding: 10px;
 }
 
 .icon-mover {
@@ -26,5 +24,17 @@ main {
     background-color: black;
     border-radius: 50%;
     cursor: move;
-    margin-left: 5px; /* Espaçamento entre o input e a bola */
+    margin-left: 10px;
+}
+
+/* Impede sobreposição */
+main {
+    position: relative;
+    height: 800px;
+    width: 305px;
+
+    background-color: red;
+}
+.container {
+    position: absolute;
 }
